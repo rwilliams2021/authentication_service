@@ -1,0 +1,19 @@
+spring:
+  config:
+    import:
+      - optional:classpath:external/authentication_service.properties
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+        provider:
+          custom-google:
+            issuer-uri: https://accounts.google.com
+
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
