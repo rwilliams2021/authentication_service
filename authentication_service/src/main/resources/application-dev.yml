@@ -10,10 +10,35 @@ spring:
           google:
             client-id: ${CLIENT_ID}
             client-secret: ${CLIENT_SECRET}
+            scope:
+              - openid
+              - email
+              - profile
+            authorization-grant-type: authorization_code
+            redirect-uri: ${app.base-url}/login/oauth2/code/google
         provider:
           custom-google:
             issuer-uri: https://accounts.google.com
 
+server:
+  servlet:
+    session:
+      cookie:
+        name: AUTH_COOKIE
+        http-only: true
+        secure: false
+        same-site: LAX
+        path: /
+      timeout: 30m
+
 logging:
   level:
     org.springframework.web.client.RestTemplate: DEBUG
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+    com.authentication.authentication_service: DEBUG
+
+app:
+  base-url: http://localhost:8080
+  google:
+    logout-callback-url: ${app.base-url}/api/auth/logout/callback
