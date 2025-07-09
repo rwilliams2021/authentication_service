@@ -1,0 +1,21 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <h1>Dashboard</h1>
+    <div class="user-info" *ngIf="user$ | async as user">
+      <span>Welcome, {{ user.name }}!</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="welcome-card">
+      <h2>Welcome to your Dashboard</h2>
+      <p>You have successfully logged in with Google OAuth2.</p>
+      <div class="user-details" *ngIf="user$ | async as user">
+        <h3>User Information:</h3>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Authentication Status:</strong> {{ user.authenticated ? 'Authenticated' : 'Not Authenticated' }}</p>
+      </div>
+    </div>
+  </main>
+</div>

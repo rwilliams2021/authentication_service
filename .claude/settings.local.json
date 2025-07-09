@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ng new:*)",
+      "Bash(npm install:*)",
+      "Bash(npx @angular/cli new:*)",
+      "Bash(npm start)",
+      "Bash(./mvnw:*)",
+      "Bash(export:*)",
+      "Bash(mvn:*)"
+    ],
+    "deny": []
+  }
+}
